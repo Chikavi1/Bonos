@@ -6,11 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+   
     public function up()
     {
         Schema::create('rewards', function (Blueprint $table) {
@@ -19,15 +15,11 @@ return new class extends Migration
             $table->text('description');
             $table->text('conditions');
             $table->text('photos');
+            $table->integer('estatus')->default(1);
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('rewards');

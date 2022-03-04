@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->integer('client_id');
             $table->integer('operador_id');  
-            $table->decimal('amount',7,2);          
+            $table->decimal('amount',7,2); 
+            $table->integer('estatus')->default(1);
             $table->timestamps();
         });
     }
