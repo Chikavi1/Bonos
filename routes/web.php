@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\RewardsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,5 +28,15 @@ Route::get('/suppliers/show/{id}',[SupplierController::class, 'show'])->name('su
 Route::delete('/suppliers/destroy',[SupplierController::class, 'destroy'])->name('suppliers.destroy');
 
 Auth::routes();
+
+
+Route::get('/rewards',[RewardsController::class, 'index']);
+Route::get('/rewards/create',[RewardsController::class, 'create']);
+Route::post('/rewards/store',[RewardsController::class, 'store']);
+Route::patch('/rewards/update',[RewardsController::class, 'update'])->name('rewards.update');
+Route::get('/rewards/edit/{id}',[RewardsController::class, 'edit'])->name('rewards.edit');
+Route::get('/rewards/show/{id}',[RewardsController::class, 'show'])->name('rewards.show');
+Route::post('/rewards/destroy',[RewardsController::class, 'destroy'])->name('rewards.destroy');
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
