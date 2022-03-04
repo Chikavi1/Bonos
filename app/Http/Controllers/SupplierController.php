@@ -74,7 +74,7 @@ class SupplierController extends Controller
         $supplier->description           = $request->get('description');
         $supplier->update();
  
-        return redirect('/suppliers')->with('success', 'Se ha actualizado correctmente');
+        return redirect('/suppliers')->with('success', 'Se ha actualizado correctamente');
     }
 
     public function destroy(Supplier $supplier)
