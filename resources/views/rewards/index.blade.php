@@ -8,9 +8,8 @@
 </div>
 @endif
 
-{!! QrCode::size(250)->generate('ItSolutionStuff.com'); !!}
 
-<a href="{{ url('rewards/create') }}">Crear Regalo</a>
+<a href="{{ url('rewards/create') }}" class="btn btn-primary mb-2">Crear Regalo</a>
     <table class="table table-bordered">
         <tr>
             <th>No</th>

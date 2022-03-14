@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\RewardsController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,5 +39,9 @@ Route::get('/rewards/edit/{id}',[RewardsController::class, 'edit'])->name('rewar
 Route::get('/rewards/show/{id}',[RewardsController::class, 'show'])->name('rewards.show');
 Route::post('/rewards/destroy',[RewardsController::class, 'destroy'])->name('rewards.destroy');
 
+Route::get('/profile',[HomeController::class,'profile'])->name('profile');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/movements', [App\Http\Controllers\HomeController::class, 'movements'])->name('movements');
+
+Route::post('logout', [HomeController::class, 'logout'])->name('logout');
