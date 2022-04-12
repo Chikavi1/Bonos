@@ -17,19 +17,26 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       @if(Auth::user())
       <ul class="navbar-nav">
+       
+        @if(Auth::user()->type == 1)
+        <li class="nav-item">
+          <p class="nav-link active" style="color:#17202F;font-weight:bold;">{{Auth::user()->points}} Puntos</p>
+        </li>
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/rewards">Premios</a>
         </li>
+        @elseif(Auth::user()->type == 3)
         <li class="nav-item">
           <a class="nav-link" href="/movements">Generar Movimiento</a>
         </li>
+        @endif
         <li class="nav-item">
           <a class="nav-link" href="/profile">Perfil</a>
         </li>
 
         <form method="POST" action="{{ route('logout') }}">
           @csrf
-          <input type="button" class="btn btn-link"  style="color:red;"value="Cerrar sesión"></input>
+          <input type="submit" class="btn btn-link"  style="color:red;text-decoration:none;"value="Cerrar sesión"></input>
         </form>
 
 
