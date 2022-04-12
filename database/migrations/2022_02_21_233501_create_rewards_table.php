@@ -15,6 +15,7 @@ return new class extends Migration
             $table->text('description');
             $table->text('conditions');
             $table->text('photos');
+            $table->integer('points');
             $table->integer('estatus')->default(1);
             $table->timestamps();
         });
