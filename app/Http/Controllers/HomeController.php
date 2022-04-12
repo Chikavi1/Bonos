@@ -32,5 +32,6 @@ class HomeController extends Controller
     public function movements(){
         return view('movements.index');
     }
+    
 
 }
