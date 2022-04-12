@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\RewardsController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MovementsController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +44,12 @@ Route::post('/rewards/destroy',[RewardsController::class, 'destroy'])->name('rew
 Route::get('/profile',[HomeController::class,'profile'])->name('profile');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/movements', [App\Http\Controllers\HomeController::class, 'movements'])->name('movements');
+
+
+Route::get('/movements', [App\Http\Controllers\MovementsController::class, 'index'])->name('movements.index');
+Route::get('/movements/create', [App\Http\Controllers\MovementsController::class, 'create'])->name('movements.create');
 
 Route::post('logout', [HomeController::class, 'logout'])->name('logout');
+
+
+Route::get('search_cellphone',[UserController::class,'searchCellphone'])->name('search');
