@@ -10,22 +10,27 @@
         </div>
     </div>
     <table class="table table-bordered">
+         <tr>
+            <th>Fotos</th>
+            <td> <img style="width:200px;" src="{{ URL::asset('public/photos/'.$reward->photos) }}" alt=""> </td>
+        </tr>
         <tr>
             <th>Nombre</th>
             <td>{{ $reward->name }}</td>
         </tr>
         <tr>
+            <th>Puntos</th>
+            <td>{{ $reward->points }}</td>
+        </tr>
+        <tr>
             <th>Descripción</th>
-            <td>{{ $reward->description }}</td>
+            <td>{!! $reward->description !!}</td>
         </tr>
         <tr>
             <th>Condiciones</th>
-            <td>{{ $reward->conditions }}</td>
+            <td>{!! $reward->conditions !!}</td>
         </tr>
-        <tr>
-            <th>Fotos</th>
-            <td> <img style="width:200px;" src="{{ $reward->photos }}" alt=""> </td>
-        </tr>
+       
  
     </table>
 @endsection
