@@ -2,7 +2,7 @@
     
     @section('content')
     <a href="/movements/create" class="btn btn-primary">Generar Movimiento</a>
-    <table class="table table-bordered">
+    <table class="table table-bordered mt-4">
         <tr>
             <th>No</th>
             <th>Fecha</th>
@@ -21,9 +21,5 @@
             </tr>
         @endforeach
     </table>
-
-
-    <hr>
-    {!! QrCode::size(250)->generate('ItSolutionStuff.com'); !!}
 
     @endsection
