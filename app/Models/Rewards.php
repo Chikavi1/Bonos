@@ -14,5 +14,6 @@ class Rewards extends Model
         'description',
         'conditions',
         'photos',
+        'points'
         ];
 }
