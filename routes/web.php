@@ -53,3 +53,5 @@ Route::post('logout', [HomeController::class, 'logout'])->name('logout');
 
 
 Route::get('search_cellphone',[UserController::class,'searchCellphone'])->name('search');
+
+Route::get('/sendMessage',[HomeController::class,'sendMessage'])->name('sendMessage');
