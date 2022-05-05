@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Rewards;
+use Illuminate\Support\Str;
 
 class RewardsController extends Controller
 {
@@ -21,17 +22,29 @@ class RewardsController extends Controller
 
     public function store(Request $request)
     {
-       $request->validate([
+
+        $result = '';
+
+        if($request->file('photos')){
+            $file= $request->file('photos');
+            $filename= date('YmdHi').'.png';
+            $file->move(public_path('public/photos'), $filename);
+            $result = $filename;
+        }
+
+    $request->validate([
         'name'       => 'required',
         'conditions' => 'required',
-        'photos'     => 'required'
+        "points"     => 'required'
     ]);
-
+    
+    
     $rewards = new Rewards([
         'name'        => $request->get('name'),
         'conditions'  => $request->get('conditions'),
         'description' => $request->get('description'),
-        'photos'      => $request->get('photos'),
+        'photos'      => $result?$result:'default.png',
+        'points'      => $request->get('points'),
     ]);
 
     $rewards->save();
@@ -42,7 +55,6 @@ class RewardsController extends Controller
     public function show($id)
     {
         $reward = Rewards::find($id);
-
         return view('rewards.show',compact('reward'));
 
     }
@@ -56,21 +68,23 @@ class RewardsController extends Controller
 
     public function update(Request $request)
     {
-        $rewards = new Rewards([
-            'name'        => $request->get('name'),
-            'conditions'  => $request->get('conditions'),
-            '   ' => $request->get('description'),
-            'photos'      => $request->get('photos'),
-        ]);
- 
- 
+       
         $reward = Rewards::find($request->id);
+        $result;
+        if($request->file('photos')){
+            $file= $request->file('photos');
+            $filename = Str::random(14).'.png';
+            $file->move(public_path('public/photos'), $filename);
+            $result = $filename;
+        }
         $reward->name                  = $request->get('name');
         $reward->description           = $request->get('description');
         $reward->conditions            = $request->get('conditions');
-        $reward->photos                = $request->get('photos');
+        $reward->photos                = $result;
+        $reward->points                = $request->get('points');
+
         $reward->update();
-        return redirect('/rewards')->with('success', 'Se ha actualizado correctamente');
+        return redirect('/rewards')->with('success', 'Se ha actualizado correctamente.');
 
     }
 
@@ -80,6 +94,6 @@ class RewardsController extends Controller
         $reward = Rewards::find($request->id);
         $reward->estatus = 0;
         $reward->update();
-        return redirect('/rewards')->with('success', 'Se ha eliminado correctamente');
+        return redirect('/rewards')->with('success', 'Se ha eliminado correctamente.');
     }
 }

@@ -32,6 +32,23 @@ class HomeController extends Controller
     public function movements(){
         return view('movements.index');
     }
+
+    public function sendMessage(){
+    
+        $messageBird = new \MessageBird\Client('JIB7GTFGcx7gOq4wz9qt7qExW');
+        $message = new \MessageBird\Objects\Message();
+        $message->originator = 'MessageBird';
+        $message->recipients = [523327276923];
+        $message->body = 'Gracias por registrarte chamo,esta es una prueba xd. conectate al discord.';
+        
+        try{
+            $response =  $messageBird->messages->create($message);
+            dd($response);
+        } catch (Exception $e){
+            echo $e->getMessage();
+        }
+    
+    }
     
 
 }
